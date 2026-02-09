@@ -6,11 +6,6 @@
     <title>Document</title>
 </head>
 <body>
-    <?php 
-        foreach ($data as $dat) { ?>
-            <p><?= $dat['nombre'] ?></p>
-       <?php }
-    ?>
-    <a href="<?= BASE_URL ?>adminStatistiques">Statistiques</a>
+    hellopr
 </body>
 </html>

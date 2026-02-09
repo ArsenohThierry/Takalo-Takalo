@@ -19,5 +19,8 @@ $router->group('', function ($router) use ($app) {
 
 		$router->get('/', [ExempleController::class, 'getAll']);
 
+		$router->get('/adminStatistiques', function () use ($app) {
+		$app->render('AdminStatistiques/statistiques', ['message' => BASE_URL . '']);
+	});	
 
 }, [SecurityHeadersMiddleware::class]);
