@@ -1,23 +1,27 @@
-<?php 
-ini_set("display_errors",1);
+<?php
+ini_set("display_errors", 1);
 error_reporting(E_ALL);
 
-exec("pwd",$output);
+exec("pwd", $output);
 echo $output[0];
 // die();
 ?>
 
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Accueil | Takalo-Takalo - Plateforme d'échange</title>
     <link rel="stylesheet" href="<?= BASE_URL ?>assets/css/accueil.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@300;400;500;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@300;400;500;600&family=Montserrat:wght@300;400;500&display=swap"
+        rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="https://img.icons8.com/color/96/000000/swap.png">
 </head>
+
 <body>
     <div class="container">
         <!-- Header avec navigation -->
@@ -29,11 +33,11 @@ echo $output[0];
                     </div>
                     <h1 class="logo-text">Takalo-<span>Takalo</span></h1>
                 </div>
-                
+
                 <button class="navbar-toggle" aria-label="Menu mobile">
                     <i class="fas fa-bars"></i>
                 </button>
-                
+
                 <ul class="navbar-menu">
                     <li class="nav-item active">
                         <a href="<?= BASE_URL ?>accueil" class="nav-link">
@@ -144,7 +148,7 @@ echo $output[0];
                     <h2 class="section-title">Objets récemment ajoutés</h2>
                     <a href="#" class="view-all">Voir tout <i class="fas fa-arrow-right"></i></a>
                 </div>
-                
+
                 <div class="objects-grid" id="objects-grid">
                     <?php
                     // Les objets doivent être fournis par le contrôleur dans la variable $objects
@@ -152,27 +156,29 @@ echo $output[0];
                         $objects = [];
                     }
 
-                    foreach ($objects as $obj): ?>
-                        <div class="object-card" data-id="<?= htmlspecialchars($obj['id'] ?? '') ?>">
-                            <div class="object-image-container">
-                                <img src="<?= BASE_URL ?>assets/images/<?= htmlspecialchars($obj['image'] ?? '') ?>" alt="<?= htmlspecialchars($obj['title'] ?? '') ?>" class="object-image">
-                                <div class="object-category"><?= htmlspecialchars($obj['category'] ?? '') ?></div>
-                            </div>
-                            <div class="object-info">
-                                <h3 class="object-title"><?= htmlspecialchars($obj['nom'] ?? '') ?></h3>
-                                <p class="object-description"><?= htmlspecialchars($obj['description'] ?? '') ?></p>
-                                <div class="object-meta">
-                                    <div class="object-owner">
-                                        <i class="fas fa-user"></i>
-                                        <span><?= htmlspecialchars($obj['owner'] ?? '') ?></span>
+                    foreach ($objects as $obj):
+                        if ($obj['id'] != $_SESSION['user']['id']) { ?>
+                            <div class="object-card" data-id="<?= htmlspecialchars($obj['id'] ?? '') ?>">
+                                <div class="object-image-container">
+                                    <img src="<?= BASE_URL ?>assets/images/<?= htmlspecialchars($obj['image'] ?? '') ?>"
+                                        alt="<?= htmlspecialchars($obj['title'] ?? '') ?>" class="object-image">
+                                    <div class="object-category"><?= htmlspecialchars($obj['category'] ?? '') ?></div>
+                                </div>
+                                <div class="object-info">
+                                    <h3 class="object-title"><?= htmlspecialchars($obj['nom'] ?? '') ?></h3>
+                                    <p class="object-description"><?= htmlspecialchars($obj['description'] ?? '') ?></p>
+                                    <div class="object-meta">
+                                        <div class="object-owner">
+                                            <i class="fas fa-user"></i>
+                                            <span><?= htmlspecialchars($obj['owner'] ?? '') ?></span>
+                                        </div>
+                                        <button class="object-action" aria-label="Proposer un échange">
+                                            <i class="fas fa-exchange-alt"></i>
+                                        </button>
                                     </div>
-                                    <button class="object-action" aria-label="Proposer un échange">
-                                        <i class="fas fa-exchange-alt"></i>
-                                    </button>
                                 </div>
                             </div>
-                        </div>
-                    <?php endforeach; ?>
+                        <?php }endforeach; ?>
                 </div>
             </section>
 
@@ -234,7 +240,7 @@ echo $output[0];
     <script>
         // Les produits sont rendus en PHP. Ce script gère uniquement
         // les interactions UI (menu mobile, recherche basique, détails).
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             setupEventListeners();
         });
 
@@ -242,7 +248,7 @@ echo $output[0];
             // Menu mobile
             const navbarToggle = document.querySelector('.navbar-toggle');
             if (navbarToggle) {
-                navbarToggle.addEventListener('click', function() {
+                navbarToggle.addEventListener('click', function () {
                     const navbarMenu = document.querySelector('.navbar-menu');
                     navbarMenu.classList.toggle('show');
                     this.innerHTML = navbarMenu.classList.contains('show')
@@ -255,12 +261,12 @@ echo $output[0];
             const searchBtn = document.querySelector('.search-btn');
             if (searchBtn) searchBtn.addEventListener('click', performSearch);
             const searchInput = document.querySelector('.search-input');
-            if (searchInput) searchInput.addEventListener('keyup', function(e) {
+            if (searchInput) searchInput.addEventListener('keyup', function (e) {
                 if (e.key === 'Enter') performSearch();
             });
 
             // Catégories et cartes d'objets
-            document.addEventListener('click', function(e) {
+            document.addEventListener('click', function (e) {
                 // Clic sur une catégorie
                 if (e.target.closest('.category-card')) {
                     e.preventDefault();
@@ -313,4 +319,5 @@ echo $output[0];
         }
     </script>
 </body>
+
 </html>
