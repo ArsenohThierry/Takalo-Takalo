@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Roman policier vintage | Takalo-Takalo</title>
-    <link rel="stylesheet" href="fiche.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>assets/css/fiche.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="https://img.icons8.com/color/96/000000/swap.png">
@@ -14,7 +14,7 @@
         <!-- Header avec navigation identique -->
         <header class="page-header">
             <nav class="navbar">
-                <a href="accueil.html" class="navbar-brand">
+                <a href="<?= BASE_URL ?>home" class="navbar-brand">
                     <div class="logo-icon">
                         <i class="fas fa-exchange-alt"></i>
                     </div>
@@ -27,19 +27,19 @@
                 
                 <ul class="navbar-menu">
                     <li class="nav-item">
-                        <a href="accueil.html" class="nav-link">
+                        <a href="<?= BASE_URL ?>home" class="nav-link">
                             <i class="fas fa-home"></i>
                             <span>Accueil</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="mes-objets.html" class="nav-link">
+                        <a href="<?= BASE_URL ?>mes-objets" class="nav-link">
                             <i class="fas fa-box-open"></i>
                             <span>Mes objets</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="login.html" class="nav-link logout-btn">
+                        <a href="<?= BASE_URL ?>deconnexion" class="nav-link logout-btn">
                             <i class="fas fa-sign-out-alt"></i>
                             <span>Déconnexion</span>
                         </a>
@@ -50,21 +50,22 @@
 
         <!-- Contenu principal - Fiche objet -->
         <main class="main-content">
+
             <div class="object-detail-container">
                 <!-- Navigation secondaire -->
                 <nav class="breadcrumb">
-                    <a href="accueil.html">Accueil</a>
+                    <a href="<?= BASE_URL ?>accueil">Accueil</a>
                     <i class="fas fa-chevron-right"></i>
                     <a href="#">Livres</a>
                     <i class="fas fa-chevron-right"></i>
-                    <span>Roman policier vintage</span>
+                    <span><?= $object['nom'] ?></span>
                 </nav>
 
                 <div class="object-detail-grid">
                     <!-- Section images -->
                     <div class="object-images-section">
                         <div class="main-image-container">
-                            <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+                            <img src="<?= BASE_URL ?>assets/images/<?= $object['image'] ?>" 
                                  alt="Roman policier vintage - vue principale" 
                                  class="main-object-image" 
                                  id="mainImage">
@@ -75,17 +76,17 @@
                         </div>
                         
                         <div class="image-thumbnails">
-                            <div class="thumbnail active" data-image="https://images.unsplash.com/photo-1544947950-fa07a98d237f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80">
-                                <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80" alt="Couverture avant">
+                            <div class="thumbnail active" data-image="<?= BASE_URL ?>assets/images/fiche-objet/thumbnail1.jpg">
+                                <img src="<?= BASE_URL ?>assets/images/fiche-objet/thumbnail1.jpg" alt="Couverture avant">
                             </div>
-                            <div class="thumbnail" data-image="https://images.unsplash.com/photo-1532012197267-da84d127e765?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80">
-                                <img src="https://images.unsplash.com/photo-1532012197267-da84d127e765?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80" alt="Page intérieure">
+                            <div class="thumbnail" data-image="<?= BASE_URL ?>assets/images/fiche-objet/thumbnail2.jpg">
+                                <img src="<?= BASE_URL ?>assets/images/fiche-objet/thumbnail2.jpg" alt="Page intérieure">
                             </div>
-                            <div class="thumbnail" data-image="https://images.unsplash.com/photo-1512820790803-83ca734da794?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80">
-                                <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80" alt="Dos du livre">
+                            <div class="thumbnail" data-image="<?= BASE_URL ?>assets/images/fiche-objet/thumbnail3.jpg">
+                                <img src="<?= BASE_URL ?>assets/images/fiche-objet/thumbnail3.jpg" alt="Dos du livre">
                             </div>
-                            <div class="thumbnail" data-image="https://images.unsplash.com/photo-1531901599638-a89bb60971a3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80">
-                                <img src="https://images.unsplash.com/photo-1531901599638-a89bb60971a3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80" alt="Étagère avec le livre">
+                            <div class="thumbnail" data-image="<?= BASE_URL ?>assets/images/fiche-objet/thumbnail4.jpg">
+                                <img src="<?= BASE_URL ?>assets/images/fiche-objet/thumbnail4.jpg" alt="Étagère avec le livre">
                             </div>
                         </div>
                         
@@ -108,7 +109,7 @@
                                 <i class="fas fa-book"></i>
                                 <span>Livre</span>
                             </div>
-                            <h1 class="object-title">Roman policier vintage - Édition originale 1962</h1>
+                            <h1 class="object-title"><?= $object['nom'] ?></h1>
                             <div class="object-rating">
                                 <div class="stars">
                                     <i class="fas fa-star"></i>
@@ -136,30 +137,13 @@
                                         <i class="fas fa-map-marker-alt"></i>
                                         <span>Paris 5ème</span>
                                     </p>
-                                    <div class="owner-rating">
-                                        <i class="fas fa-star"></i>
-                                        <span>4.8/5</span>
-                                        <span class="rating-count">(45 échanges)</span>
-                                    </div>
+                                    
                                 </div>
                             </div>
-                            <div class="owner-stats">
-                                <div class="stat">
-                                    <div class="stat-value">98%</div>
-                                    <div class="stat-label">Taux de satisfaction</div>
-                                </div>
-                                <div class="stat">
-                                    <div class="stat-value">12</div>
-                                    <div class="stat-label">Objets échangés</div>
-                                </div>
-                                <div class="stat">
-                                    <div class="stat-value">2 ans</div>
-                                    <div class="stat-label">Membre depuis</div>
-                                </div>
-                            </div>
+                            
                             <button class="owner-contact-btn">
                                 <i class="fas fa-comment-dots"></i>
-                                <span>Contacter le propriétaire</span>
+                                <span>Voir le profil</span>
                             </button>
                         </div>
 
@@ -172,70 +156,14 @@
                             <div class="description-content">
                                 <p>Édition originale de 1962 du roman policier "L'Énigme du Manoir Gris" par l'auteur renommé Jacques Moreau. Ce livre rare a été conservé dans d'excellentes conditions pendant plus de 60 ans.</p>
                                 
-                                <h3>Caractéristiques</h3>
-                                <ul class="features-list">
-                                    <li><i class="fas fa-check"></i> Couverture rigide en bon état</li>
-                                    <li><i class="fas fa-check"></i> Pages intérieures jaunies mais intactes</li>
-                                    <li><i class="fas fa-check"></i> Signature de l'auteur en page de garde</li>
-                                    <li><i class="fas fa-check"></i> Jaquette d'origine légèrement usée aux bords</li>
-                                    <li><i class="fas fa-check"></i> 320 pages, édition complète</li>
-                                </ul>
-                                
-                                <h3>État général</h3>
-                                <div class="condition-indicator">
-                                    <div class="condition-bar">
-                                        <div class="condition-fill" style="width: 85%;"></div>
-                                    </div>
-                                    <div class="condition-label">Excellent état (85%)</div>
-                                </div>
-                                
-                                <p>Parfait pour les collectionneurs de livres anciens ou les amateurs de polars vintage. L'histoire elle-même est un classique du genre, souvent citée comme une influence majeure pour les auteurs contemporains.</p>
+
                             </div>
                         </div>
 
-                        <!-- Détails techniques -->
-                        <div class="object-details-grid">
-                            <div class="detail-card">
-                                <div class="detail-icon">
-                                    <i class="fas fa-ruler-combined"></i>
-                                </div>
-                                <div class="detail-content">
-                                    <h4>Dimensions</h4>
-                                    <p>15 x 22 x 3 cm</p>
-                                </div>
-                            </div>
-                            <div class="detail-card">
-                                <div class="detail-icon">
-                                    <i class="fas fa-weight"></i>
-                                </div>
-                                <div class="detail-content">
-                                    <h4>Poids</h4>
-                                    <p>450 grammes</p>
-                                </div>
-                            </div>
-                            <div class="detail-card">
-                                <div class="detail-icon">
-                                    <i class="fas fa-palette"></i>
-                                </div>
-                                <div class="detail-content">
-                                    <h4>Couleur</h4>
-                                    <p>Rouge bordeaux</p>
-                                </div>
-                            </div>
-                            <div class="detail-card">
-                                <div class="detail-icon">
-                                    <i class="fas fa-calendar-alt"></i>
-                                </div>
-                                <div class="detail-content">
-                                    <h4>Année</h4>
-                                    <p>1962</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                        
 
                     <!-- Section action -->
-                    <div class="object-action-section">
+                    <div class="object-action-section w-100">
                         <div class="action-card">
                             <div class="action-header">
                                 <h2 class="section-subtitle">
@@ -274,11 +202,13 @@
                             
                             <div class="action-buttons">
                                 <!-- Bouton principal Atakalo -->
-                                <button class="atakalo-btn" id="exchangeBtn">
+                                <a href="<?= BASE_URL ?>proposer-echange/<?= $object['id'] ?>" style="text-decoration:none">
+                                    <button class="atakalo-btn" id="exchangeBtn">
                                     <i class="fas fa-exchange-alt"></i>
                                     <span>Atakalo</span>
                                     <small>Proposer un échange</small>
                                 </button>
+                                </a>
                                 
                                 <button class="secondary-btn" id="favoriteBtn">
                                     <i class="far fa-heart"></i>
@@ -289,47 +219,6 @@
                                     <i class="fas fa-share-alt"></i>
                                     <span>Partager</span>
                                 </button>
-                            </div>
-                            
-                            <div class="safety-tips">
-                                <h3>
-                                    <i class="fas fa-shield-alt"></i>
-                                    Conseils de sécurité
-                                </h3>
-                                <ul>
-                                    <li>Rencontrez-vous dans un lieu public</li>
-                                    <li>Vérifiez l'objet avant l'échange</li>
-                                    <li>Ne communiquez pas d'informations personnelles sensibles</li>
-                                    <li>Signalez tout comportement suspect</li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <!-- Suggestions d'objets similaires -->
-                        <div class="similar-objects">
-                            <h2 class="section-subtitle">
-                                <i class="fas fa-book-open"></i>
-                                Objets similaires
-                            </h2>
-                            <div class="similar-items">
-                                <a href="#" class="similar-item">
-                                    <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=150&q=80" 
-                                         alt="Roman historique">
-                                    <h4>Roman historique 1958</h4>
-                                    <p>Pierre D.</p>
-                                </a>
-                                <a href="#" class="similar-item">
-                                    <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=150&q=80" 
-                                         alt="Collection de poésie">
-                                    <h4>Collection de poésie</h4>
-                                    <p>Sophie M.</p>
-                                </a>
-                                <a href="#" class="similar-item">
-                                    <img src="https://images.unsplash.com/photo-1531901599638-a89bb60971a3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=150&q=80" 
-                                         alt="Livre d'art">
-                                    <h4>Livre d'art vintage</h4>
-                                    <p>Thomas R.</p>
-                                </a>
                             </div>
                         </div>
                     </div>
@@ -391,25 +280,7 @@
                 fullscreenBtn.addEventListener('click', function() {
                     alert("Mode plein écran - En production, cela ouvrirait l'image en plein écran");
                 });
-            }
-            
-            // Bouton Atakalo (échange)
-            const exchangeBtn = document.getElementById('exchangeBtn');
-            if (exchangeBtn) {
-                exchangeBtn.addEventListener('click', function() {
-                    // Animation du bouton
-                    this.innerHTML = '<i class="fas fa-spinner fa-spin"></i><span>Envoi en cours...</span>';
-                    this.disabled = true;
-                    
-                    // Simulation d'envoi
-                    setTimeout(() => {
-                        alert("Votre demande d'échange a été envoyée à Marie L. !\n\nElle recevra une notification et pourra accepter ou refuser votre proposition.");
-                        this.innerHTML = '<i class="fas fa-exchange-alt"></i><span>Atakalo</span><small>Proposer un échange</small>';
-                        this.disabled = false;
-                    }, 1500);
-                });
-            }
-            
+            }  
             // Bouton favori
             const favoriteBtn = document.getElementById('favoriteBtn');
             if (favoriteBtn) {

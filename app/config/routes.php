@@ -30,4 +30,6 @@ $router->group('', function ($router) use ($app) {
 
 	$router->get('/home',[ObjectsController::class, 'getAll']);
 
+	$router->get('/object/@id', [ObjectsController::class, 'getObjectById']);
+
 }, [SecurityHeadersMiddleware::class]);

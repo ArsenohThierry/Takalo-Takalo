@@ -155,8 +155,14 @@ session_start();
                     }
 
                     foreach ($objects as $obj):
-                        if ($obj['id_proprietaire'] != $_SESSION['user']['id']) { ?>
-                            <div class="object-card" data-id="<?= htmlspecialchars($obj['id'] ?? '') ?>">
+                        if ($obj['id_proprietaire'] != $_SESSION['user']['id']) { 
+                            $objId = htmlspecialchars($obj['id'] ?? '');
+                            
+                            $objectUrl = BASE_URL . 'object/' . $objId;
+                            $exchangeUrl = BASE_URL . 'proposer-echange/' . $objId;
+                    ?>
+                        <div class="object-wrapper" data-href="<?= $objectUrl ?>">
+                            <div class="object-card" data-id="<?= $objId ?>">
                                 <div class="object-image-container">
                                     <img src="<?= BASE_URL ?>assets/images/<?= htmlspecialchars($obj['image'] ?? '') ?>"
                                         alt="<?= htmlspecialchars($obj['title'] ?? '') ?>" class="object-image">
@@ -170,13 +176,15 @@ session_start();
                                             <i class="fas fa-user"></i>
                                             <span><?= htmlspecialchars($obj['owner'] ?? '') ?></span>
                                         </div>
-                                        <button class="object-action" aria-label="Proposer un échange">
+                                        <a class="object-action-link" href="<?= $exchangeUrl ?>" aria-label="Proposer un échange">
                                             <i class="fas fa-exchange-alt"></i>
-                                        </button>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
-                        <?php }endforeach; ?>
+                        </div>
+                    <?php }
+                    endforeach; ?>
                 </div>
             </section>
 
@@ -264,15 +272,7 @@ session_start();
             });
 
             // Catégories et cartes d'objets
-            document.addEventListener('click', function (e) {
-                // Clic sur une catégorie
-                if (e.target.closest('.category-card')) {
-                    e.preventDefault();
-                    const categoryCard = e.target.closest('.category-card');
-                    const categoryName = categoryCard.querySelector('h3').textContent;
-                    alert(`Filtrer par catégorie: ${categoryName}`);
-                    return;
-                }
+         
 
                 // Action d'échange (bouton)
                 if (e.target.closest('.object-action')) {
@@ -319,3 +319,15 @@ session_start();
 </body>
 
 </html>
+
+<script>
+// Make object-wrapper clickable but ignore clicks on internal links
+document.addEventListener('click', function(e) {
+    const wrapper = e.target.closest('.object-wrapper');
+    if (!wrapper) return;
+    // If the click was on a real link or inside one, don't override
+    if (e.target.closest('a')) return;
+    const href = wrapper.getAttribute('data-href');
+    if (href) window.location.href = href;
+});
+</script>

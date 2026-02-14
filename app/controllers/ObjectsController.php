@@ -20,4 +20,10 @@ class ObjectsController
         $objets = $objecModel->getAllObjects();
         $this->app->render('Home/accueil', ['objects'=> $objets]);
     }
-}
+
+    public function getObjectById($id){
+        $objectModel = new ObjectModel(Flight::db());
+        $object = $objectModel->getObjectById((int)$id);
+        $this->app->render('Home/ficheObjet', ['object' => $object]);
+        }
+    }
