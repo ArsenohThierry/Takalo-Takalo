@@ -40,4 +40,16 @@ class UserModel {
             return false;
         }
     }
+
+    public function getIdByUsername($username) {
+        $stmt = $this->db->prepare('SELECT id FROM user_takalo WHERE nom = ?');
+        $stmt->execute([$username]);
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+        
+        if ($user) {
+            return $user['id'];
+        } else {
+            return null;
+        }
+    }
 }

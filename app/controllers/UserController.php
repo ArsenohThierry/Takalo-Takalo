@@ -32,6 +32,13 @@ class UserController
         if (!$result) {
             $this->app->render('Login/login', ['message' => 'Erreur lors de l\'inscription. Veuillez réessayer.']);
         }
+            session_start();
+            $_SESSION['user'] = [
+                'id' => $usermodel->getIdByUsername($username),
+                'username' => $username,
+                'email' => $email
+            ];
+
             $this->app->redirect('home');
         }
 
@@ -55,6 +62,12 @@ class UserController
             
             if ($user) {
                 // Si la connexion est réussie :
+                session_start();
+                $_SESSION['user'] = [
+                    'id' => $user['id'],
+                    'username' => $user['nom'],
+                    'email' => $user['email']
+                ];
                 $this->app->redirect('home');
             } else {
                 $this->app->render('Login/login', ['message' => 'Erreur lors de la connexion. Veuillez vérifier vos identifiants.']);

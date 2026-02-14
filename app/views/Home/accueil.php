@@ -1,10 +1,8 @@
-<?php
-ini_set("display_errors", 1);
+<?php 
+ini_set("display_errors",1);
 error_reporting(E_ALL);
 
-exec("pwd", $output);
-echo $output[0];
-// die();
+session_start();
 ?>
 
 <!DOCTYPE html>
@@ -157,7 +155,7 @@ echo $output[0];
                     }
 
                     foreach ($objects as $obj):
-                        if ($obj['id'] != $_SESSION['user']['id']) { ?>
+                        if ($obj['id_proprietaire'] != $_SESSION['user']['id']) { ?>
                             <div class="object-card" data-id="<?= htmlspecialchars($obj['id'] ?? '') ?>">
                                 <div class="object-image-container">
                                     <img src="<?= BASE_URL ?>assets/images/<?= htmlspecialchars($obj['image'] ?? '') ?>"
