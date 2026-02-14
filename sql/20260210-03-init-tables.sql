@@ -56,7 +56,10 @@ INSERT INTO statut_takalo (statut) VALUES ('Neutre');
 
 
 INSERT into produit_takalo (nom,description,prix,image,id_categorie,id_proprietaire,id_statut) VALUES
-('God de 30 cm','Fait mal mais fait aussi du bien',69000,'jsp.jpg',1,1,4);
+('Main','Fait mal mais fait aussi du bien',69000,'jsp.jpg',1,1,4);
+
+INSERT into produit_takalo (nom,description,prix,image,id_categorie,id_proprietaire,id_statut) VALUES
+('Main','Fikokorana Lamosina',5000,'main.jpg',3,3,4);
 
 insert into produit_takalo (nom,description,prix,image,id_categorie,id_proprietaire,id_statut) VALUES
 ('Vibrateur','Si vous avez déja révé de vibrer',67000,'jsp.jpg',1,2,4);
