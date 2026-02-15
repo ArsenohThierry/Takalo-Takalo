@@ -4,49 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Proposer un échange | Takalo-Takalo</title>
-    <link rel="stylesheet" href="echange.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>assets/css/echange.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="https://img.icons8.com/color/96/000000/swap.png">
 </head>
 <body>
     <div class="container">
-        <!-- Header avec navigation identique -->
-        <header class="page-header">
-            <nav class="navbar">
-                <a href="accueil.html" class="navbar-brand">
-                    <div class="logo-icon">
-                        <i class="fas fa-exchange-alt"></i>
-                    </div>
-                    <h1 class="logo-text">Takalo-<span>Takalo</span></h1>
-                </a>
-                
-                <button class="navbar-toggle" aria-label="Menu mobile">
-                    <i class="fas fa-bars"></i>
-                </button>
-                
-                <ul class="navbar-menu">
-                    <li class="nav-item">
-                        <a href="accueil.html" class="nav-link">
-                            <i class="fas fa-home"></i>
-                            <span>Accueil</span>
-                        </a>
-                    </li>
-                    <li class="nav-item active">
-                        <a href="mes-objets.html" class="nav-link">
-                            <i class="fas fa-box-open"></i>
-                            <span>Mes objets</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="login.html" class="nav-link logout-btn">
-                            <i class="fas fa-sign-out-alt"></i>
-                            <span>Déconnexion</span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-        </header>
+        <?php include __DIR__ . '/../Partials/header.php'; ?>
 
         <!-- Contenu principal - Page d'échange -->
         <main class="main-content exchange-page">
@@ -84,12 +49,13 @@
                     
                     <div class="target-object-card">
                         <div class="target-object-image">
-                            <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80" 
-                                 alt="Roman policier vintage">
+                            <img src="<?= BASE_URL ?>assets/images/<?= $object['image'] ?>" 
+                                 alt="<?= $object['nom'] ?>">
                             <div class="object-category-tag">Livre</div>
                         </div>
+                        
                         <div class="target-object-info">
-                            <h3 class="target-object-title">Roman policier vintage - Édition originale 1962</h3>
+                            <h3 class="target-object-title"><?= $object['nom'] ?></h3>
                             <div class="target-object-meta">
                                 <div class="target-object-owner">
                                     <i class="fas fa-user"></i>
@@ -101,7 +67,7 @@
                                 </div>
                             </div>
                             <div class="target-object-description">
-                                <p>Édition originale de 1962 du roman policier "L'Énigme du Manoir Gris" par Jacques Moreau. Livre rare conservé dans d'excellentes conditions.</p>
+                                <p><?= $object['description'] ?></p>
                             </div>
                             <div class="target-object-rating">
                                 <div class="rating-stars">
@@ -125,7 +91,7 @@
                             Sélectionnez l'objet que vous proposez
                         </h2>
                         <div class="objects-count">
-                            <span class="count-number">6</span> objets disponibles
+                            <span class="count-number"><?= isset($myobjects) ? count($myobjects) : 0 ?></span> objets disponibles
                         </div>
                     </div>
                     
@@ -143,7 +109,7 @@
                         <!-- Les objets de l'utilisateur seront générés ici par JavaScript -->
                     </div>
                     
-                    <div class="no-objects-message" id="noObjectsMessage" style="display: none;">
+                    <div class="no-objects-message" id="noObjectsMessage" style="<?php echo (isset($myobjects) && count($myobjects) > 0) ? 'display: none;' : 'display: block;'; ?>">
                         <div class="empty-state">
                             <i class="fas fa-box-open"></i>
                             <h3>Aucun objet disponible pour échange</h3>
@@ -238,80 +204,29 @@
             </div>
         </main>
 
-        <!-- Footer identique -->
-        <footer class="page-footer">
-            <div class="footer-content">
-                <p class="footer-text">ETU004031 - ETU004273 - ETU004183</p>
-                <p class="footer-copyright">© 2023 Takalo-Takalo - Plateforme d'échange d'objets</p>
-                <div class="footer-links">
-                    <a href="#">Conditions d'utilisation</a>
-                    <a href="#">Politique de confidentialité</a>
-                    <a href="#">Contact</a>
-                    <a href="#">À propos</a>
-                </div>
-            </div>
-        </footer>
+        <?php include __DIR__ . '/../Partials/footer.php'; ?>
     </div>
 
     <!-- Script pour la page d'échange -->
     <script>
-        // Données des objets de l'utilisateur (simulées)
-        const userObjects = [
-            {
-                id: 1,
-                title: "Livre de cuisine ancien",
-                category: "Livres",
-                image: "https://images.unsplash.com/photo-1544787219-7f47ccb76574?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80",
-                description: "Recueil de recettes traditionnelles des années 50",
-                condition: "Bon état",
-                value: "Moyenne"
-            },
-            {
-                id: 2,
-                title: "Appareil photo vintage",
-                category: "Électronique",
-                image: "https://images.unsplash.com/photo-1515378960530-7c0da6231fb1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80",
-                description: "Appareil photo argentique des années 70, fonctionnel",
-                condition: "Très bon état",
-                value: "Élevée"
-            },
-            {
-                id: 3,
-                title: "Vase en céramique artisanale",
-                category: "Décoration",
-                image: "https://images.unsplash.com/photo-1578500494198-246f612d3b3d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80",
-                description: "Vase unique fabriqué à la main, motifs traditionnels",
-                condition: "Excellent état",
-                value: "Moyenne"
-            },
-            {
-                id: 4,
-                title: "Montre à gousset ancienne",
-                category: "Bijoux & Accessoires",
-                image: "https://images.unsplash.com/photo-1523170335258-f5ed11844a49?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80",
-                description: "Montre à gousset en argent, années 1920",
-                condition: "Bon état",
-                value: "Élevée"
-            },
-            {
-                id: 5,
-                title: "Jeu de société vintage",
-                category: "Jeux & Jouets",
-                image: "https://images.unsplash.com/photo-1592079925-7a7d7ae6b45d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80",
-                description: "Jeu de société complet des années 60, règles incluses",
-                condition: "Bon état",
-                value: "Moyenne"
-            },
-            {
-                id: 6,
-                title: "Lampadaire design années 80",
-                category: "Décoration",
-                image: "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80",
-                description: "Lampadaire rétro en parfait état de fonctionnement",
-                condition: "Excellent état",
-                value: "Moyenne"
+        // Données des objets de l'utilisateur (générées côté serveur)
+        const userObjects = <?php
+            $jsObjects = [];
+            if (isset($myobjects) && is_array($myobjects)) {
+                foreach ($myobjects as $o) {
+                    $jsObjects[] = [
+                        'id' => $o['id'],
+                        'title' => $o['nom'] ?? '',
+                        'category' => $o['id_categorie'] ?? '',
+                        'image' => (defined('BASE_URL') ? BASE_URL : '') . 'assets/images/' . ($o['image'] ?? ''),
+                        'description' => $o['description'] ?? '',
+                        'condition' => '',
+                        'value' => ''
+                    ];
+                }
             }
-        ];
+            echo json_encode($jsObjects, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+        ?>;
 
         // État de l'application
         let selectedObject = null;

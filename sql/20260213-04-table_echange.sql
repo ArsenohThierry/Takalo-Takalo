@@ -18,4 +18,4 @@ CREATE table appartenance(
     FOREIGN KEY (id_proprietaire) REFERENCES user_takalo(id)
 );
 
-SELECT * FROM produit_takalo as p join categorie;
+SELECT * FROM v_produit_takalo as p join categorie;

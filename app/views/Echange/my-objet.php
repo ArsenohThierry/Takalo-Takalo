@@ -4,49 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Roman policier vintage - Détails | Takalo-Takalo</title>
-    <link rel="stylesheet" href="objets.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>assets/css/objets.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="https://img.icons8.com/color/96/000000/swap.png">
 </head>
 <body>
     <div class="container">
-        <!-- Header avec navigation -->
-        <header class="page-header">
-            <nav class="navbar">
-                <a href="accueil.html" class="navbar-brand">
-                    <div class="logo-icon">
-                        <i class="fas fa-exchange-alt"></i>
-                    </div>
-                    <h1 class="logo-text">Takalo-<span>Takalo</span></h1>
-                </a>
-                
-                <button class="navbar-toggle" aria-label="Menu mobile">
-                    <i class="fas fa-bars"></i>
-                </button>
-                
-                <ul class="navbar-menu">
-                    <li class="nav-item">
-                        <a href="accueil.html" class="nav-link">
-                            <i class="fas fa-home"></i>
-                            <span>Accueil</span>
-                        </a>
-                    </li>
-                    <li class="nav-item active">
-                        <a href="mes-objets.html" class="nav-link">
-                            <i class="fas fa-box-open"></i>
-                            <span>Mes objets</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="login.html" class="nav-link logout-btn">
-                            <i class="fas fa-sign-out-alt"></i>
-                            <span>Déconnexion</span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-        </header>
+        <?php include __DIR__ . '/../Partials/header.php'; ?>
 
         <!-- Contenu principal -->
         <main class="main-content">
@@ -298,19 +263,7 @@
             </div>
         </main>
 
-        <!-- Footer -->
-        <footer class="page-footer">
-            <div class="footer-content">
-                <p class="footer-text">ETU004031 - ETU004273 - ETU004183</p>
-                <p class="footer-copyright">© 2023 Takalo-Takalo - Plateforme d'échange d'objets</p>
-                <div class="footer-links">
-                    <a href="#">Conditions d'utilisation</a>
-                    <a href="#">Politique de confidentialité</a>
-                    <a href="#">Contact</a>
-                    <a href="#">À propos</a>
-                </div>
-            </div>
-        </footer>
+        <?php include __DIR__ . '/../Partials/footer.php'; ?>
     </div>
 
     <!-- Script pour les interactions -->

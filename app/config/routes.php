@@ -33,5 +33,8 @@ $router->group('', function ($router) use ($app) {
 	$router->get('/object/@id', [ObjectsController::class, 'getObjectById']);
 
 	$router->get('/mes-objets', [ObjectsController::class, 'getMyObjects']);
+
+	$router->get('/proposer-echange/@id', [ObjectsController::class, 'getObjectsAEchanger']);
+
 	
 }, [SecurityHeadersMiddleware::class]);

@@ -15,20 +15,20 @@ class ObjectModel
 
     public function getAllObjects()
     {
-        $stmt = $this->db->query("SELECT * FROM produit_takalo");
+        $stmt = $this->db->query("SELECT * FROM v_produit_takalo");
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public function getObjectById($id)
     {
-        $stmt = $this->db->prepare("SELECT * FROM produit_takalo WHERE id = :id");
+        $stmt = $this->db->prepare("SELECT * FROM v_produit_takalo WHERE id = :id");
         $stmt->bindValue(':id', (int) $id, PDO::PARAM_INT);
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
     public function getMyObjects($id_proprietaire)
     {
-        $stmt = $this->db->prepare('SELECT * FROM produit_takalo WHERE id_proprietaire = :id_proprietaire');
+        $stmt = $this->db->prepare('SELECT * FROM v_produit_takalo WHERE id_proprietaire = :id_proprietaire');
         $stmt->bindValue(':id_proprietaire', (int)$id_proprietaire, PDO::PARAM_INT);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -36,7 +36,7 @@ class ObjectModel
     
     public function getNumberMyObjects($id_proprietaire)
     {
-        $stmt = $this->db->prepare('SELECT COUNT(*) as count FROM produit_takalo WHERE id_proprietaire = :id_proprietaire');
+        $stmt = $this->db->prepare('SELECT COUNT(*) as count FROM v_produit_takalo WHERE id_proprietaire = :id_proprietaire');
         $stmt->bindValue(':id_proprietaire', (int)$id_proprietaire, PDO::PARAM_INT);
         $stmt->execute();
         $result = $stmt->fetch(PDO::FETCH_ASSOC);

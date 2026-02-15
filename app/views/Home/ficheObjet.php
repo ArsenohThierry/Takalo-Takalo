@@ -11,42 +11,7 @@
 </head>
 <body>
     <div class="container">
-        <!-- Header avec navigation identique -->
-        <header class="page-header">
-            <nav class="navbar">
-                <a href="<?= BASE_URL ?>home" class="navbar-brand">
-                    <div class="logo-icon">
-                        <i class="fas fa-exchange-alt"></i>
-                    </div>
-                    <h1 class="logo-text">Takalo-<span>Takalo</span></h1>
-                </a>
-                
-                <button class="navbar-toggle" aria-label="Menu mobile">
-                    <i class="fas fa-bars"></i>
-                </button>
-                
-                <ul class="navbar-menu">
-                    <li class="nav-item">
-                        <a href="<?= BASE_URL ?>home" class="nav-link">
-                            <i class="fas fa-home"></i>
-                            <span>Accueil</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="<?= BASE_URL ?>mes-objets" class="nav-link">
-                            <i class="fas fa-box-open"></i>
-                            <span>Mes objets</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="<?= BASE_URL ?>deconnexion" class="nav-link logout-btn">
-                            <i class="fas fa-sign-out-alt"></i>
-                            <span>Déconnexion</span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-        </header>
+        <?php include __DIR__ . '/../Partials/header.php'; ?>
 
         <!-- Contenu principal - Fiche objet -->
         <main class="main-content">
@@ -226,19 +191,7 @@
             </div>
         </main>
 
-        <!-- Footer identique -->
-        <footer class="page-footer">
-            <div class="footer-content">
-                <p class="footer-text">ETU004031 - ETU004273 - ETU004183</p>
-                <p class="footer-copyright">© 2023 Takalo-Takalo - Plateforme d'échange d'objets</p>
-                <div class="footer-links">
-                    <a href="#">Conditions d'utilisation</a>
-                    <a href="#">Politique de confidentialité</a>
-                    <a href="#">Contact</a>
-                    <a href="#">À propos</a>
-                </div>
-            </div>
-        </footer>
+        <?php include __DIR__ . '/../Partials/footer.php'; ?>
     </div>
 
     <!-- Script pour les interactions de la fiche objet -->

@@ -22,42 +22,7 @@ session_start();
 
 <body>
     <div class="container">
-        <!-- Header avec navigation -->
-        <header class="page-header">
-            <nav class="navbar">
-                <div class="navbar-brand">
-                    <div class="logo-icon">
-                        <i class="fas fa-exchange-alt"></i>
-                    </div>
-                    <h1 class="logo-text">Takalo-<span>Takalo</span></h1>
-                </div>
-
-                <button class="navbar-toggle" aria-label="Menu mobile">
-                    <i class="fas fa-bars"></i>
-                </button>
-
-                <ul class="navbar-menu">
-                    <li class="nav-item active">
-                        <a href="<?= BASE_URL ?>accueil" class="nav-link">
-                            <i class="fas fa-home"></i>
-                            <span>Accueil</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="<?= BASE_URL ?>mes-objets" class="nav-link">
-                            <i class="fas fa-box-open"></i>
-                            <span>Mes objets</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="<?= BASE_URL ?>deconnexion" class="nav-link logout-btn">
-                            <i class="fas fa-sign-out-alt"></i>
-                            <span>Déconnexion</span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-        </header>
+        <?php include __DIR__ . '/../Partials/header.php'; ?>
 
         <!-- Contenu principal -->
         <main class="main-content">
@@ -227,19 +192,7 @@ session_start();
             </section>
         </main>
 
-        <!-- Footer -->
-        <footer class="page-footer">
-            <div class="footer-content">
-                <p class="footer-text">ETU004031 - ETU004273 - ETU004183</p>
-                <p class="footer-copyright">© 2023 Takalo-Takalo - Plateforme d'échange d'objets</p>
-                <div class="footer-links">
-                    <a href="#">Conditions d'utilisation</a>
-                    <a href="#">Politique de confidentialité</a>
-                    <a href="#">Contact</a>
-                    <a href="#">À propos</a>
-                </div>
-            </div>
-        </footer>
+        <?php include __DIR__ . '/../Partials/footer.php'; ?>
     </div>
 
     <!-- Script pour gérer les interactions (produits rendus côté serveur) -->
