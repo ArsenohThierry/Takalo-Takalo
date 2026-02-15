@@ -91,13 +91,13 @@
                         <div class="owner-info-card">
                             <div class="owner-header">
                                 <div class="owner-avatar">
-                                    <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80" 
-                                         alt="Photo de Marie L." 
+                                    <img src="<?= BASE_URL ?>assets/images/<?= htmlspecialchars($object['proprietaire_image'] ?? 'default-avatar.jpg') ?>" 
+                                         alt="Photo de <?= htmlspecialchars($object['proprietaire_nom'] ?? 'Propriétaire') ?>" 
                                          class="avatar-image">
                                     <div class="owner-status"></div>
                                 </div>
                                 <div class="owner-details">
-                                    <h3 class="owner-name">Marie L.</h3>
+                                    <h3 class="owner-name"><?= htmlspecialchars($object['proprietaire_nom'] ?? 'Propriétaire inconnu') ?></h3>
                                     <p class="owner-location">
                                         <i class="fas fa-map-marker-alt"></i>
                                         <span>Paris 5ème</span>
@@ -119,9 +119,7 @@
                                 Description détaillée
                             </h2>
                             <div class="description-content">
-                                <p>Édition originale de 1962 du roman policier "L'Énigme du Manoir Gris" par l'auteur renommé Jacques Moreau. Ce livre rare a été conservé dans d'excellentes conditions pendant plus de 60 ans.</p>
-                                
-
+                                <p><?= htmlspecialchars($object['description'] ?? 'Aucune description disponible pour cet objet.') ?></p>
                             </div>
                         </div>
 

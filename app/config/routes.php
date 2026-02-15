@@ -35,6 +35,6 @@ $router->group('', function ($router) use ($app) {
 	$router->get('/mes-objets', [ObjectsController::class, 'getMyObjects']);
 
 	$router->get('/proposer-echange/@id', [ObjectsController::class, 'getObjectsAEchanger']);
-
+	$router->post('/proposer-echange/submit', [ObjectsController::class,'submitEchange']);
 	
 }, [SecurityHeadersMiddleware::class]);

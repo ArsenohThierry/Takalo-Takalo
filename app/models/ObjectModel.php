@@ -42,4 +42,11 @@ class ObjectModel
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
         return $result['count'] ?? 0;
     }
+
+    public function updateStatut($id_objet)
+    {
+        $stmt = $this->db->prepare('UPDATE produit_takalo SET id_statut = 1 WHERE id = :id_objet');
+        $stmt->bindValue(':id_objet', (int)$id_objet, PDO::PARAM_INT);
+        return $stmt->execute();
+    }
 }

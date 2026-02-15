@@ -79,4 +79,14 @@ class ObjectsController
 
         $this->app->render('Echange/mes-objets-echange', ['object' => $object, 'myobjects' => $myobjects, 'selectedMine' => $selectedMine]);
     }
+    public function submitEchange(){
+        $data = $this->app->request()->data;
+        $objectModel = new ObjectModel(Flight::db());
+
+        //update leur statut
+        $objectModel->updateStatut((int)$data['mine_id']);
+        $objectModel->updateStatut((int)$data['target_id']);
+
+        $this->app->render('', [''=> $objectModel]);
+    }
 }
