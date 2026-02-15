@@ -60,6 +60,23 @@ class ObjectsController
         session_start();
         $myobjects = $objectModel->getMyObjects((int) $_SESSION['user']['id']);
 
-        $this->app->render('Echange/mes-objets-echange', ['object' => $object, 'myobjects' => $myobjects]);
+        // Vérifier si l'utilisateur a sélectionné un de ses objets (paramètre GET 'mine')
+        $selectedMine = null;
+        if (!empty($_GET['mine'])) {
+            $mineId = (int) $_GET['mine'];
+            // Chercher dans la liste des mes objets
+            foreach ($myobjects as $m) {
+                if ((int) $m['id'] === $mineId) {
+                    $selectedMine = $m;
+                    break;
+                }
+            }
+            // Si pas trouvé (sécurité), essayer de le récupérer depuis la base
+            if ($selectedMine === null) {
+                $selectedMine = $objectModel->getObjectById($mineId);
+            }
+        }
+
+        $this->app->render('Echange/mes-objets-echange', ['object' => $object, 'myobjects' => $myobjects, 'selectedMine' => $selectedMine]);
     }
 }
