@@ -23,7 +23,7 @@ session_start();
 <body>
     <div class="container">
         <?php include __DIR__ . '/../Partials/header.php'; ?>
-
+        <div class=""><?php if (isset($message)) echo "<p class='message'>" . $message . "</p>"; ?></div>
         <!-- Contenu principal -->
         <main class="main-content">
             <section class="hero-section">

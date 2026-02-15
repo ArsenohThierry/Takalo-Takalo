@@ -87,6 +87,6 @@ class ObjectsController
         $objectModel->updateStatut((int)$data['mine_id']);
         $objectModel->updateStatut((int)$data['target_id']);
 
-        $this->app->render('', [''=> $objectModel]);
+        $this->app->render('Home/accueil', ['message' => 'Proposition d\'échange envoyée !']);
     }
 }
